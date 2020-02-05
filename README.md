@@ -11,6 +11,8 @@ Start the container:
 $ docker-compose up
 ```
 
+
+
 * Then open `localhost:8071` to access Odoo 12.0. If you want to start the server with a different port, change **8071** to another value:
 
 ```
@@ -27,7 +29,39 @@ $ docker-compose up -d
 ```
 
 # Custom addons
-
+ 1. Lỗi OSError: inotify watch limit reached
+ ```
+  cat /proc/sys/fs/inotify/max_user_watches
+ 8192
+ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
+ sudo sysctl -p
+ ```
+ 
+ 2. Lỗi virtual real time limit
+ ```
+ Sửa trong file config odoo
+ limit-time-real=600
+ ```
+# Custom addons
+Cài đặt 1 số thư viện trong image:
+```
+sandbox: cai dat tren quanly
+	pip3 install xlrd
+	= Cài cái này trước wheel
+	pip3 install wheel
+	pip3 install python-docx
+	pip3 install openpyxl
+	pip3 install pandas
+	
+	# Cài auto backup
+	pip3 install paramiko
+	
+	#cài đặt asterisk
+	pip3 install tinyrpc
+	pip3 install Humanize
+	
+	pip3 install xlrd wheel python-docx openpyxl pandas paramiko
+```
 The **addons** folder contains custom addons. Just put your custom addons if you have any.
 
 # Odoo configuration
