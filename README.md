@@ -62,6 +62,7 @@ sandbox: cai dat tren quanly
 	
 	pip3 install xlrd wheel python-docx openpyxl pandas paramiko
 ```
+Lỗi khi in: cấu hính thêm tham số hệ thống: http://0.0.0.0:8069 = report.url
 The **addons** folder contains custom addons. Just put your custom addons if you have any.
 
 # Odoo configuration
